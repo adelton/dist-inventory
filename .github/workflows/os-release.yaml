@@ -1,0 +1,35 @@
+name: Get os-release information from container images
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '21 3 * * *'
+
+jobs:
+  build:
+    name: Get os-release
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - registry.fedoraproject.org/fedora:rawhide
+          - registry.fedoraproject.org/fedora:43
+          - registry.fedoraproject.org/fedora:42
+          - registry.fedoraproject.org/fedora:41
+          - docker.io/library/almalinux:10
+          - docker.io/library/almalinux:9
+          - docker.io/library/almalinux:8
+          - docker.io/rockylinux/rockylinux:10
+          - docker.io/rockylinux/rockylinux:9
+          - docker.io/rockylinux/rockylinux:8
+          - docker.io/library/ubuntu:25.10
+          - docker.io/library/ubuntu:25.04
+          - docker.io/library/ubuntu:24.10
+          - docker.io/library/ubuntu:24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: podman pull ${{ matrix.os }}
+      - run: podman run --rm ${{ matrix.os }} cat /etc/os-release
