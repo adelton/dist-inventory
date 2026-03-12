@@ -30,6 +30,6 @@ jobs:
           - docker.io/library/ubuntu:24.10
           - docker.io/library/ubuntu:24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: podman pull ${{ matrix.os }}
       - run: podman run --rm ${{ matrix.os }} cat /etc/os-release
