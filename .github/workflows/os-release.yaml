@@ -16,6 +16,7 @@ jobs:
       matrix:
         os:
           - registry.fedoraproject.org/fedora:rawhide
+          - registry.fedoraproject.org/fedora:44
           - registry.fedoraproject.org/fedora:43
           - registry.fedoraproject.org/fedora:42
           - registry.fedoraproject.org/fedora:41
@@ -25,6 +26,7 @@ jobs:
           - docker.io/rockylinux/rockylinux:10
           - docker.io/rockylinux/rockylinux:9
           - docker.io/rockylinux/rockylinux:8
+          - docker.io/library/ubuntu:26.04
           - docker.io/library/ubuntu:25.10
           - docker.io/library/ubuntu:25.04
           - docker.io/library/ubuntu:24.10
