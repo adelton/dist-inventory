@@ -1,0 +1,22 @@
+name: Get busybox version from container image
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '22 3 * * *'
+
+jobs:
+  build:
+    name: Get busybox version
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - docker.io/library/busybox
+    steps:
+      - uses: actions/checkout@v6
+      - run: podman pull ${{ matrix.os }}
+      - run: podman run --rm ${{ matrix.os }} busybox --version
