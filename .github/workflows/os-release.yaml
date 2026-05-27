@@ -18,8 +18,6 @@ jobs:
           - registry.fedoraproject.org/fedora:rawhide
           - registry.fedoraproject.org/fedora:44
           - registry.fedoraproject.org/fedora:43
-          - registry.fedoraproject.org/fedora:42
-          - registry.fedoraproject.org/fedora:41
           - docker.io/library/almalinux:10
           - docker.io/library/almalinux:9
           - docker.io/library/almalinux:8
